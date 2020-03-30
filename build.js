@@ -14,7 +14,7 @@
   }
 
   const acc = {};
-  const csvData = [];
+  const csvData = [`"fips", "population"`];
 
   for (let state = 0; state < 60; state++) {
     console.log(`Fetching state ${state}`);
