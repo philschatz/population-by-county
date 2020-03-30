@@ -7,13 +7,14 @@
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
   function pad(num) {
     if (num < 10) {
-      return `0${num}`
+      return `0${num}`;
     } else {
-      return `${num}`
+      return `${num}`;
     }
   }
 
-  let acc = {};
+  const acc = {};
+  const csvData = [];
 
   for (let state = 0; state < 60; state++) {
     console.log(`Fetching state ${state}`);
@@ -34,11 +35,13 @@
 
     res.forEach(item => {
       acc[`${item.state}${item.county}`] = item.POP
+      csvData.push(`"${item.state}${item.county}", ${item.POP}`)
     })
-    await sleep(500);
+    await sleep(250);
   }
 
   writeFileSync('fips-population.json', JSON.stringify(acc, null, 2));
+  writeFileSync('fips-population.csv', csvData.join('\n'));
 
 })();
 
