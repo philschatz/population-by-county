@@ -1,0 +1,9 @@
+{
+  "script": {
+    "start": "node build.js"
+  },
+  "devDependencies": {
+    "citysdk": "^2.1.0",
+    "pify": "^5.0.0"
+  }
+}
