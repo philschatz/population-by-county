@@ -14,7 +14,7 @@
   }
 
   const acc = {};
-  const csvData = [`"fips", "population"`];
+  const csvData = [`fips,population,density`];
 
   for (let state = 0; state < 60; state++) {
     console.log(`Fetching state ${state}`);
@@ -35,7 +35,7 @@
 
     res.forEach(item => {
       acc[`${item.state}${item.county}`] = item.POP
-      csvData.push(`"${item.state}${item.county}", ${item.POP}`)
+      csvData.push(`"${item.state}${item.county}",${item.POP},${item.DENSITY}`)
     })
     await sleep(250);
   }
